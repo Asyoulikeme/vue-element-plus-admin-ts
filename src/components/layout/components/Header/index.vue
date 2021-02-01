@@ -46,7 +46,6 @@ export default {
     watch(
       () => route.path,
       () => {
-        console.log("route.path changed")
         console.log(route.matched)
         routeListConfig.currentRouteList = route.matched;
       }
@@ -99,7 +98,7 @@ export default {
 }
 .breadcrumb-no-redirect{
   &:hover{
-    cursor: none;
+    cursor: default;
   }
 }
 .link-tag {

@@ -4,20 +4,20 @@
       <el-menu-item
         :key="routeIndex"
         :index="resolvePath(routeItem.path)"
-        v-if="(routeItem.children && routeItem.children.length <= 0) || !routeItem.children"
+        v-if="!routeItem.hidden && ((routeItem.children && routeItem.children.length <= 0) || !routeItem.children)"
       >
-        <i :class="routeItem.meta.icon || ''"></i>
-        <template #title>{{ routeItem.meta.title }}1</template>
+        <i :class="routeItem.meta && routeItem.meta.icon || ''"></i>
+        <template #title>{{ routeItem.meta ? routeItem.meta.title :'' }}1</template>
       </el-menu-item>
       <el-submenu
         class="submenu-title"
         :key="routeIndex"
         :index="routeItem.path"
-        v-if="routeItem.children && routeItem.children.length > 0"
+        v-if="!routeItem.hidden && routeItem.children && routeItem.children.length > 0"
       >
         <template #title>
-          <i :class="routeItem.meta.icon || ''"></i>
-          <span>{{ routeItem.meta.title }}2</span>
+          <i :class="routeItem.meta && routeItem.meta.icon || ''"></i>
+          <span>{{ routeItem.meta && routeItem.meta.title || ""}}2</span>
         </template>
         <el-menu-item-group>
           <sidebar
@@ -41,7 +41,6 @@ export default {
     basePath: String
   },
   setup(props, context) {
-    console.log(props.basePath)
     function resolvePath(routePath) {
       const hasBasePath = props.basePath || "";
       return path.resolve(hasBasePath, routePath);
@@ -54,42 +53,60 @@ export default {
 </script>
 <style scoped lang="less">
 @import '/@/style/variable.less';
-
+ 
+  .el-menu{
+    color: #c1c6c8;
+    border-right:1px solid rgb(48, 65, 86) !important;
+    
+  }
+  .el-menu-item-group{
+    background-color: #151822;
+  }
+  .el-menu-item i{
+    color: #c1c6c8;
+    vertical-align: -1px;
+  }
+  :deep(.el-submenu__title){
+    color: #c1c6c8;
+    box-sizing: border-box;
+  }
   .is-active > .el-submenu__title {
     color: @subMenuActiveText !important;
+    background-color :@menuActiveBg !important;
+  }
+  .is-active.el-menu-item {
+    color: @menuActiveText !important;
+    background-color :@menuActiveBg !important;
+  }
+  .is-active.el-menu-item i{
+    color: @menuActiveText !important;
+  }
+  .is-active > :deep(ul) {
+    background-color: #151822 !important;
   }
   .submenu-title-noDropdown,
   :deep(.el-submenu__title),
   .el-menu-item {
-    color:#FFFFFF !important;
+    color:#FFFFFF;
     &:hover {
-      background-color: @menuHover !important;
-    }
-    &.is-active{
-      color:#409EFF;
+      background-color: @menuHover;
     }
   }
-  .el-menu-item i{
-    vertical-align: -1px;
-    color: @menuText !important;
+  .el-menu-item.is-active {
+    &:hover{
+      background-color:@menuActiveBg !important;
+    }
   }
-  :deep(.el-submenu__title) i{
-    color: @menuText !important;
-  }
-  .el-menu-item.is-active i{
-    color: @menuActiveText !important;
-  }
-  .is-active > :deep(.el-submenu__title) {
-    color: @subMenuActiveText !important;
-  }
+  
+  // :deep(.el-submenu__title) i{
+  //   color: @menuText !important;
+  // }
+  
 
   & .nest-menu .el-submenu > :deep(.el-submenu__title),
-  & .el-submenu .el-menu-item {
-    
-    //min-width: @sideBarWidth !important;
-    background-color: @subMenuBg !important;
-    &:hover {
-      background-color: @subMenuHover !important;
+  & .el-submenu .el-menu-item:not(.is-active){
+      &:hover {
+        background-color: @subMenuHover !important;
     }
   }
   .el-menu-item:focus{

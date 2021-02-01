@@ -10,7 +10,7 @@ export default defineComponent({
   setup(){
     let obj = {}
     const a = cloneDeep(obj)
-    console.log(a)
+    //console.log(a)
   }
 })
 </script>

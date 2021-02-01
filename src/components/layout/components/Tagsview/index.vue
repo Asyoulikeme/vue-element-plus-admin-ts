@@ -8,27 +8,26 @@
         <router-link :to="item.path">
           {{item.name}}
         </router-link>
-        <span @click="deleteOneMenu(item)" v-if="index !==0 " class="el-icon-close"></span>
+        <span @click="closeCurrentRouteTag(item)" v-if="dynamicTagList.length > 1 " class="el-icon-close"></span>
       </div>
     </el-scrollbar>
   </div>
 </template>
 
 <script>
-import {useDynamicRoutesHook} from '/@/composition/useTagViewApi.ts';
-import {useRoute} from 'vue-router';
+import { useDynamicRoutesHook } from '/@/composition/useTagViewApi';
+import { useRoute } from 'vue-router';
 export default {
   setup() {
     const route = useRoute();
-    const {deleteDynamicTag, dynamic} = useDynamicRoutesHook();
-
-    function deleteOneMenu(item) {
-      deleteDynamicTag(item, route.path);
+    const { delDynamicRouteTag, dynamicRouteTags } = useDynamicRoutesHook();
+    function closeCurrentRouteTag(item) {
+      delDynamicRouteTag(item, route.path);
     }
     
     return {
-        dynamicTagList: dynamic.dRoutes,
-        deleteOneMenu
+        dynamicTagList: dynamicRouteTags.dRoutes,
+        closeCurrentRouteTag
     };
   }
 };
@@ -47,6 +46,7 @@ export default {
   .scroll-item {
     display: inline-block;
     height:27px;
+    line-height: 1.5;
     border: 1px solid #eee;
     border-radius: 3px;
     padding: 3px 8px;
@@ -58,6 +58,9 @@ export default {
     color: #666;
     padding: 0 10px;
   }
+  span{
+    font-size: 13px;
+  }
 }
 .el-icon-close{
     cursor: pointer;
@@ -65,9 +68,7 @@ export default {
     padding: 1px;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.el-icon-close:hover{
-  background: #b4bccc;
-}
+
 .scroll-container {
   text-align: left;
   box-sizing: border-box;
@@ -93,7 +94,7 @@ export default {
   
 }
 .active{
-  background: @menuActiveText;
+  background: #409eff;
   color: #fff;
   a{
     color: #fff;

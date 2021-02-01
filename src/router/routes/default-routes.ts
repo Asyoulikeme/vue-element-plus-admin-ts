@@ -1,25 +1,44 @@
-import { RouteRecordRaw } from "vue-router"
+import { RouteRecordRaw, _RouteRecordBase, CustomRouteRecordRaw } from "vue-router"
+
 import Layout from "/@/components/layout/index.vue"
 import Home from "/@/views/Home.vue"
-export const defaultRoutes:RouteRecordRaw[] = [
+import NotFound from "/@/views/error-page/Not-Found.vue"
+
+/* Extensions */
+declare module 'vue-router' {
+    export interface _CustomRouteRecordBase extends _RouteRecordBase {
+        hidden?: boolean,
+        component?: RouteComponent
+    }
+    export type CustomRouteRecordRaw = _CustomRouteRecordBase
+}
+
+export const defaultRoutes: CustomRouteRecordRaw[] = [
     {
         path: '/',
         component: Layout,
-        meta:{
-            title:"供应商管理",
-            icon: 'el-icon-s-home',
-        },
+        redirect: "/home",
+        hidden: true,
         children: [
             {
-                path: "fs",
-                name: "Home",
+                path: "home",
                 component: Home,
+                name: "Home",
                 meta: {
+                    title: "首页",
                     icon: 'el-icon-s-home',
-                    title: "供应商首页",
-                    noCache:false
-                },
-            }
-        ],
-    }
+                }
+            },
+            {
+                path: "/404", 
+                component: NotFound,
+                name:"NotFound",
+                meta:{
+                    title:"404"
+                }
+            },
+        ]
+    },
+    
+    { path: '/(.*)', redirect: '/404', hidden: true }
 ]

@@ -6,6 +6,7 @@
     :default-active="$route.path"
     :background-color="variables.menuBg"
     :text-color="variables.menuText"
+    :unique-opened="true"
     :active-text-color="variables.menuActiveText"
     @select="menuSelect"
   >
@@ -31,7 +32,7 @@ export default {
   setup () {
     const store = useStore();
     const route = useRoute();
-    const {dynamicRouteTags} = useDynamicRoutesHook();
+    const {addDynamicRouteTag} = useDynamicRoutesHook();
 
     function menuSelect(index: any) {
       let parentPath = '';
@@ -39,7 +40,7 @@ export default {
       if( parentPathIndex > 0) {
         parentPath = index.slice(0, parentPathIndex);
       }
-      dynamicRouteTags(index, parentPath);
+      addDynamicRouteTag(index, parentPath);
     }
     return {
       state: store.state,

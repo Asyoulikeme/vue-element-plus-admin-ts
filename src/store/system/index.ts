@@ -1,8 +1,8 @@
-import { defaultRoutes } from "/@/router/routes/default-routes"
+import { default as allRoutes } from "/@/router/routes/index"
 export default {
   state: {
     isCollapse: false,
-    defaultRoutes: defaultRoutes
+    allRoutes: allRoutes,
   },
   getters: {
   },
