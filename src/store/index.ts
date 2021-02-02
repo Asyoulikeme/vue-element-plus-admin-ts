@@ -1,7 +1,7 @@
-import { createStore } from 'vuex';
-import system from './system';
+import { createStore } from "vuex"
+import system from "./system"
 export default createStore({
   modules: {
     system
   }
-});
+})

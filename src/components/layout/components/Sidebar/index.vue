@@ -1,5 +1,5 @@
 <template>
-  <el-menu 
+  <el-menu
     router
     class="el-menu-vertical-demo"
     :collapse="state.system.isCollapse"
@@ -10,44 +10,48 @@
     :active-text-color="variables.menuActiveText"
     @select="menuSelect"
   >
-    <sidebar :item="routes" basePath=""></sidebar>
+    <sidebar :item="routes" base-path="" />
   </el-menu>
 </template>
 
 <script scoped lang="ts">
-import { useStore } from 'vuex';
-import {
-    useRouter, useRoute
-} from "vue-router";
-import {ref, onMounted} from 'vue';
-import Sidebar from './Sidebar.vue';
+import { useStore } from "vuex"
+import { useRouter, useRoute } from "vue-router"
+import { ref, onMounted } from "vue"
+import Sidebar from "./Sidebar.vue"
 
-import {useDynamicRoutesHook} from '/@/composition/useTagViewApi';
-import variables from '/@/style/variable.less';
+import { useDynamicRoutesHook } from "/@/composition/useTagViewApi"
+import variables from "/@/style/variable.less"
 export default {
-  props: ['routes'],
   components: {
     Sidebar
   },
-  setup () {
-    const store = useStore();
-    const route = useRoute();
-    const {addDynamicRouteTag} = useDynamicRoutesHook();
+  props: {
+    routes: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+    const { addDynamicRouteTag } = useDynamicRoutesHook()
 
     function menuSelect(index: any) {
-      let parentPath = '';
-      let parentPathIndex = index.lastIndexOf('/');
-      if( parentPathIndex > 0) {
-        parentPath = index.slice(0, parentPathIndex);
+      let parentPath = ""
+      let parentPathIndex = index.lastIndexOf("/")
+      if (parentPathIndex > 0) {
+        parentPath = index.slice(0, parentPathIndex)
       }
-      addDynamicRouteTag(index, parentPath);
+      addDynamicRouteTag(index, parentPath)
     }
     return {
       state: store.state,
       menuSelect,
       variables
-    };
+    }
   }
-  
-};
+}
 </script>

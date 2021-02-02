@@ -1,23 +1,22 @@
 <template>
-    <div>
-        BB类用户 <el-input v-model="localVal"></el-input>
-    </div>
+  <div>
+    BB类用户
+    <el-input v-model="localVal" />
+  </div>
 </template>
 
 <script>
 import { ref } from "vue"
 export default {
-name: "BB",
-setup(){
-  const localVal = ref()
+  name: "BB",
+  setup() {
+    const localVal = ref()
 
-  return {
-    localVal
+    return {
+      localVal
+    }
   }
-}
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

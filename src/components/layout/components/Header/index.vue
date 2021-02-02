@@ -1,70 +1,86 @@
 <template>
   <div class="header_main" style="">
     <div class="collapseicon">
-      <i @click="toggleMenuCollpase()" :class="state.system.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
+      <i
+        :class="state.system.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+        @click="toggleMenuCollpase()"
+      />
       <el-breadcrumb separator="/">
         <transition-group name="breadcrumb">
-          <el-breadcrumb-item key="/" :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item v-for="(item, index) in routeListConfig.currentRouteList" :key="index">
-            <span v-if="item.redirect === 'noRedirect'" class="breadcrumb-no-redirect">
+          <el-breadcrumb-item key="/" :to="{ path: '/' }">
+            首页
+          </el-breadcrumb-item>
+          <el-breadcrumb-item
+            v-for="(item, index) in routeListConfig.currentRouteList"
+            :key="index"
+          >
+            <span
+              v-if="item.redirect === 'noRedirect'"
+              class="breadcrumb-no-redirect"
+            >
               {{ item.name }}
             </span>
-            <span v-else-if="item.path.startsWith('/')" class="breadcrumb-no-redirect">{{ item.meta.title }}</span>
+            <span
+              v-else-if="item.path.startsWith('/')"
+              class="breadcrumb-no-redirect"
+            >
+              {{ item.meta.title }}
+            </span>
             <a v-else>{{ item.name }}</a>
           </el-breadcrumb-item>
         </transition-group>
       </el-breadcrumb>
     </div>
     <div class="link-tag">
-      <tagsview></tagsview>
+      <tagsview />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { useStore } from "vuex";
-import { useRoute } from "vue-router";
-import { watch, reactive, onMounted } from "vue";
-import tagsview from "../Tagsview/index.vue";
+import { useStore } from "vuex"
+import { useRoute } from "vue-router"
+import { watch, reactive, onMounted } from "vue"
+import tagsview from "../Tagsview/index.vue"
 
 export default {
+  components: {
+    tagsview
+  },
   setup() {
-  
-    const store = useStore();
-    const route = useRoute();
+    const store = useStore()
+    const route = useRoute()
     let routeListConfig: any = reactive({
       currentRouteList: []
-    });
+    })
     function toggleMenuCollpase() {
-      store.commit("TOOGLE_SIDEBAR");
+      store.commit("TOOGLE_SIDEBAR")
     }
 
     function useRouteList(value: any) {
-      return value;
+      return value
     }
 
     watch(
       () => route.path,
       () => {
         console.log(route.matched)
-        routeListConfig.currentRouteList = route.matched;
+        routeListConfig.currentRouteList = route.matched
       }
-    );
+    )
 
     return {
       toggleMenuCollpase,
       routeListConfig,
       state: store.state
-    };
-  },
-  components: {
-    tagsview
+    }
   }
-};
+}
 </script>
 <style lang="less">
-@import '/@/style/variable.less';
-.collapseicon .el-breadcrumb__inner a:hover, .collapseicon .el-breadcrumb__inner.is-link:hover{
+@import "/@/style/variable.less";
+.collapseicon .el-breadcrumb__inner a:hover,
+.collapseicon .el-breadcrumb__inner.is-link:hover {
   color: @menuActiveText;
 }
 .header_main {
@@ -82,7 +98,8 @@ export default {
   cursor: pointer;
 }
 // el-icon-s-unfold 折叠后
-.collapseicon .el-icon-s-fold, .collapseicon .el-icon-s-unfold {
+.collapseicon .el-icon-s-fold,
+.collapseicon .el-icon-s-unfold {
   font-size: 16px;
   vertical-align: middle;
   margin-right: 5px;
@@ -96,8 +113,8 @@ export default {
   display: inline-block;
   vertical-align: middle;
 }
-.breadcrumb-no-redirect{
-  &:hover{
+.breadcrumb-no-redirect {
+  &:hover {
     cursor: default;
   }
 }
@@ -108,7 +125,7 @@ export default {
 /* breadcrumb transition */
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .breadcrumb-enter,
@@ -118,11 +135,10 @@ export default {
 }
 
 .breadcrumb-move {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .breadcrumb-leave-active {
   position: absolute;
 }
-
 </style>

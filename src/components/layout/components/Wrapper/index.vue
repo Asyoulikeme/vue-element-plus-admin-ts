@@ -1,10 +1,8 @@
 <template>
-  <router-view>
-  </router-view>
+  <router-view />
 </template>
 <script>
-export default {};
+export default {}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

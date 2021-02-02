@@ -1,11 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router';
-import ElementPlus from 'element-plus';
-import 'element-plus/lib/theme-chalk/index.css';
-import store from './store';
-const app = createApp(App)
-.use(router)
-.use(store)
-.use(ElementPlus)
-.mount('#app')
+import { createApp } from "vue"
+import App from "./App.vue"
+import router from "./router"
+import ElementPlus from "element-plus"
+import "element-plus/lib/theme-chalk/index.css"
+import store from "./store"
+const app = createApp(App).use(router).use(store).use(ElementPlus).mount("#app")

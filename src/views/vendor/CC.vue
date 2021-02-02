@@ -1,15 +1,11 @@
 <template>
-  <div>
-    CC类供应商
-  </div>
+  <div>CC类供应商</div>
 </template>
 
 <script>
 export default {
-name: "CC"
+  name: "CC"
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
