@@ -1,35 +1,39 @@
 <template>
-  <div>
-    <el-container>
-      <aside>
-        <Sidebar :routes="routes"></Sidebar>
-      </aside>
-      <el-container>
+    <el-container direction="vertical" class="max-container">
         <el-header>
-          <Head></Head>
+          <system-info></system-info>
         </el-header>
-        <el-main>
-            <router-view v-slot="{ Component }">
-              <transition name="fade-transform" mode="out-in">
-                <keep-alive :include="Array.from(cachedViews)">
-                  <component class="view" :is="Component" />
-                </keep-alive>
-              </transition>
-            </router-view>
-        </el-main>
-      </el-container>
+        <el-container direction="horizontal">
+          <aside>
+            <sidebar :routes="routes"></sidebar>
+          </aside>
+          <el-container direction="vertical" class="inner-container"> 
+            <nav class="nav">
+              <navbar></navbar>
+            </nav>
+            <el-main>
+                <router-view v-slot="{ Component }">
+                  <transition name="fade-transform" mode="out-in">
+                    <keep-alive :include="Array.from(cachedViews)">
+                      <component class="view" :is="Component" />
+                    </keep-alive>
+                  </transition>
+                </router-view>
+            </el-main>
+          </el-container>
+        </el-container>
+      
     </el-container>
-  </div>
 </template>
 
 <script lang="ts">
-import { ref, reactive, watchEffect } from "vue";
+import { ref, reactive, watchEffect ,Transition} from "vue";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
 
 import Sidebar from "./components/Sidebar/index.vue";
-import Head from "./components/Header/index.vue";
-
+import Navbar from "./components/Header/index.vue";
+import SystemInfo from "./components/Header/system-info.vue"
 import { useDynamicRoutesHook } from "/@/composition/useTagViewApi";
 export default {
   setup() {
@@ -55,16 +59,32 @@ export default {
     };
   },
   components: {
+    Transition,
     Sidebar,
-    Head
+    Navbar,
+    SystemInfo
   }
 };
 </script>
 <style scoped>
-section.el-container.is-vertical {
+section.el-container.is-vertical.max-container {
   height: 100vh;
-  overflow-y: scroll;
-  width: calc(100vh - 210px);
+  width: 100%;
+  box-sizing: border-box;
+}
+section.el-container.is-vertical.inner-container {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.el-header{
+  background-color: #262F3E;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav{
+  width:100%;
+  height: 65px;
 }
 .el-main::-webkit-scrollbar {
 	display: none;
@@ -92,8 +112,7 @@ section.el-container.is-vertical {
   display: none;
 }
 </style>
-<style lang="less" scoped>
-// @import "@/style/transition.less";
+<style scoped>
 /* fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
@@ -110,8 +129,4 @@ section.el-container.is-vertical {
   transform: translateX(30px);
 }
 
-.el-header {
-  padding: 0;
-  height: 70px !important;
-}
 </style>
