@@ -46,7 +46,7 @@ export default {
     const { addDynamicRouteTag, cachedViews } = useDynamicRoutesHook()
     const { SYSTEM_INFO } = useSystemStoreHook()
     const route = useRoute()
-    
+
     const routes = SYSTEM_INFO.allRoutes
     // const cachedViews = store.state.system.cachedViews
     // 初始化页面刷新保证当前路由tabview存在

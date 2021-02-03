@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { useRoute } from "vue-router"
-import { watch, reactive, onMounted} from "vue"
+import { watch, reactive, onMounted } from "vue"
 import TagsView from "../Tagsview/index.vue"
 import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
 
@@ -48,20 +48,20 @@ export default {
     TagsView
   },
   setup() {
-    const { toggleSidebar,SYSTEM_INFO } = useSystemStoreHook()
+    const { toggleSidebar, SYSTEM_INFO } = useSystemStoreHook()
     const route = useRoute()
     let routeListConfig: any = reactive({
       currentRouteList: []
     })
 
     watch(
-    
-        () => route.path,
-      () => {2
+      () => route.path,
+      () => {
+        2
         routeListConfig.currentRouteList = route.matched
       },
       {
-        immediate:true
+        immediate: true
       }
     )
 

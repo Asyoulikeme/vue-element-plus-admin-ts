@@ -1,5 +1,3 @@
-
-
 export { version as APP_VERSION } from "../../package.json"
 export { name as APP_NAME } from "../../package.json"
 

@@ -3,13 +3,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent,getCurrentInstance } from "vue"
 import { cloneDeep } from "lodash-es"
 export default defineComponent({
   name: "App",
   setup() {
     let obj = {}
     const a = cloneDeep(obj)
+    console.log(getCurrentInstance())
     //console.log(a)
   }
 })
