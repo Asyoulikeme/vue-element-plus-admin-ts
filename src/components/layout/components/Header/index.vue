@@ -2,8 +2,8 @@
   <div class="header_main" style="">
     <div class="collapseicon">
       <i
-        :class="state.system.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-        @click="toggleMenuCollpase()"
+        :class="SYSTEM_INFO.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+        @click="toggleSidebar"
       />
       <el-breadcrumb separator="/">
         <transition-group name="breadcrumb">
@@ -32,47 +32,43 @@
       </el-breadcrumb>
     </div>
     <div class="link-tag">
-      <tagsview />
+      <tags-view />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { useStore } from "vuex"
 import { useRoute } from "vue-router"
-import { watch, reactive, onMounted } from "vue"
-import tagsview from "../Tagsview/index.vue"
+import { watch, reactive, onMounted} from "vue"
+import TagsView from "../Tagsview/index.vue"
+import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
 
 export default {
   components: {
-    tagsview
+    TagsView
   },
   setup() {
-    const store = useStore()
+    const { toggleSidebar,SYSTEM_INFO } = useSystemStoreHook()
     const route = useRoute()
     let routeListConfig: any = reactive({
       currentRouteList: []
     })
-    function toggleMenuCollpase() {
-      store.commit("TOOGLE_SIDEBAR")
-    }
-
-    function useRouteList(value: any) {
-      return value
-    }
 
     watch(
-      () => route.path,
-      () => {
-        console.log(route.matched)
+    
+        () => route.path,
+      () => {2
         routeListConfig.currentRouteList = route.matched
+      },
+      {
+        immediate:true
       }
     )
 
     return {
-      toggleMenuCollpase,
+      toggleSidebar,
       routeListConfig,
-      state: store.state
+      SYSTEM_INFO
     }
   }
 }

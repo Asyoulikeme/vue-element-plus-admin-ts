@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
+    "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue,ts,tsx,jsx}\"",
     "lintfix": "eslint \"src/**/*.{js,vue,ts,tsx,jsx}\" --fix"
   },
@@ -15,8 +16,7 @@
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.3",
-    "vuex": "^4.0.0-rc.2"
+    "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -45,5 +45,12 @@
       "name": "wuyuwei",
       "email": "wuyuwei@xsyx.com"
     }
+  ],
+  "keywords": [
+    "vue3",
+    "element-plus",
+    "admin-template",
+    "typescript",
+    "vite"
   ]
 }

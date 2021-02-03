@@ -45,8 +45,6 @@
 </template>
 <script>
 import path from "path"
-import { useStore } from "vuex"
-import { computed } from "vue"
 
 export default {
   name: "Sidebar",

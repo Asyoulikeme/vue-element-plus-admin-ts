@@ -73,10 +73,10 @@ export function useDynamicRoutesHook() {
   }
 }
 
-export function addCachedView(name: string) {
+function addCachedView(name: string) {
   cachedViews.value.add(name)
 }
 
-export function removeCachedView(name: string) {
+function removeCachedView(name: string) {
   cachedViews.value.delete(name)
 }

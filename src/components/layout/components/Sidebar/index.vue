@@ -2,7 +2,7 @@
   <el-menu
     router
     class="el-menu-vertical-demo"
-    :collapse="state.system.isCollapse"
+    :collapse="SYSTEM_INFO.isCollapse"
     :default-active="$route.path"
     :background-color="variables.menuBg"
     :text-color="variables.menuText"
@@ -15,12 +15,12 @@
 </template>
 
 <script scoped lang="ts">
-import { useStore } from "vuex"
 import { useRouter, useRoute } from "vue-router"
 import { ref, onMounted } from "vue"
 import Sidebar from "./Sidebar.vue"
 
 import { useDynamicRoutesHook } from "/@/composition/useTagViewApi"
+import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
 import variables from "/@/style/variable.less"
 export default {
   components: {
@@ -35,7 +35,7 @@ export default {
     }
   },
   setup() {
-    const store = useStore()
+    const { SYSTEM_INFO } = useSystemStoreHook()
     const route = useRoute()
     const { addDynamicRouteTag } = useDynamicRoutesHook()
 
@@ -48,7 +48,7 @@ export default {
       addDynamicRouteTag(index, parentPath)
     }
     return {
-      state: store.state,
+      SYSTEM_INFO,
       menuSelect,
       variables
     }

@@ -27,13 +27,14 @@
 
 <script lang="ts">
 import { ref, reactive, watchEffect, Transition } from "vue"
-import { useStore } from "vuex"
+
 import { useRouter, useRoute } from "vue-router"
 
 import Sidebar from "./components/Sidebar/index.vue"
 import Navbar from "./components/Header/index.vue"
 import SystemInfo from "./components/Header/system-info.vue"
 import { useDynamicRoutesHook } from "/@/composition/useTagViewApi"
+import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
 export default {
   components: {
     Transition,
@@ -43,10 +44,10 @@ export default {
   },
   setup() {
     const { addDynamicRouteTag, cachedViews } = useDynamicRoutesHook()
-    window.fss = cachedViews
+    const { SYSTEM_INFO } = useSystemStoreHook()
     const route = useRoute()
-    const store = useStore()
-    const routes = store.state.system.allRoutes
+    
+    const routes = SYSTEM_INFO.allRoutes
     // const cachedViews = store.state.system.cachedViews
     // 初始化页面刷新保证当前路由tabview存在
     const stop = watchEffect(() => {
