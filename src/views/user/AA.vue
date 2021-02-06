@@ -6,17 +6,17 @@
 </template>
 
 <script>
-import { ref } from "vue"
-export default {
-  name: "AA",
-  setup() {
-    const localVal = ref()
+  import { ref } from "vue"
+  export default {
+    name: "AA",
+    setup() {
+      const localVal = ref()
 
-    return {
-      localVal
+      return {
+        localVal
+      }
     }
   }
-}
 </script>
 
 <style scoped></style>

@@ -1,8 +1,4 @@
-import {
-  RouteRecordRaw,
-  _RouteRecordBase,
-  CustomRouteRecordRaw
-} from "vue-router"
+import { _RouteRecordBase, CustomRouteRecordRaw } from "vue-router"
 
 import Layout from "/@/components/layout/index.vue"
 import Home from "/@/views/Home.vue"
@@ -22,7 +18,6 @@ export const defaultRoutes: CustomRouteRecordRaw[] = [
     path: "/",
     component: Layout,
     redirect: "/home",
-    hidden: true,
     children: [
       {
         path: "home",
@@ -32,9 +27,16 @@ export const defaultRoutes: CustomRouteRecordRaw[] = [
           title: "首页",
           icon: "el-icon-s-home"
         }
-      },
+      }
+    ]
+  },
+  {
+    path: "/404",
+    component: Layout,
+    hidden:true,
+    children: [
       {
-        path: "/404",
+        path: "",
         component: NotFound,
         name: "NotFound",
         meta: {
@@ -43,6 +45,10 @@ export const defaultRoutes: CustomRouteRecordRaw[] = [
       }
     ]
   },
-
-  { path: "/(.*)", redirect: "/404", hidden: true }
+  { 
+    path: "/:pathMatch(.*)*",
+    redirect: "/404",
+    hidden: true,
+    //name: "NotFound"
+  }
 ]

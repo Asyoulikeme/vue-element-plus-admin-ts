@@ -3,9 +3,9 @@
 </template>
 
 <script>
-export default {
-  name: "CC"
-}
+  export default {
+    name: "CC"
+  }
 </script>
 
 <style scoped></style>

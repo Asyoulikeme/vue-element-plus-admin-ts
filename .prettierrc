@@ -1,5 +1,21 @@
 semi: false
 singleQuote: false
-printWidth: 80
+printWidth: 100
 trailingComma: "none"
-htmlWhitespaceSensitivity: "ignore"
+tabWidth: 2
+useTabs: false
+
+vueIndentScriptAndStyle: true
+
+quoteProps: 'as-needed'
+bracketSpacing: true
+
+jsxBracketSameLine: false
+jsxSingleQuote: false
+arrowParens: 'always'
+insertPragma: false
+requirePragma: false
+proseWrap: 'never'
+htmlWhitespaceSensitivity: 'strict'
+endOfLine: 'lf'
+rangeStart: 0
