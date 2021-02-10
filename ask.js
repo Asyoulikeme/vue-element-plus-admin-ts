@@ -11,7 +11,7 @@ module.exports = [
     },
     {
         type: "input",
-        name: "author",
+        name: "description",
         message: "description:"
     },
 ]
