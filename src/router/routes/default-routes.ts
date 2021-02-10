@@ -1,17 +1,8 @@
-import { _RouteRecordBase, CustomRouteRecordRaw } from "vue-router"
-
+import { _RouteRecordBase } from "vue-router"
+import { CustomRouteRecordRaw } from "./index.d"
 import Layout from "/@/components/layout/index.vue"
 import Home from "/@/views/Home.vue"
 import NotFound from "/@/views/error-page/Not-Found.vue"
-
-/* Extensions */
-declare module "vue-router" {
-  export interface _CustomRouteRecordBase extends _RouteRecordBase {
-    hidden?: boolean
-    component?: RouteComponent
-  }
-  export type CustomRouteRecordRaw = _CustomRouteRecordBase
-}
 
 export const defaultRoutes: CustomRouteRecordRaw[] = [
   {

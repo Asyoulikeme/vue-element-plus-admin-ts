@@ -30,13 +30,13 @@
 </template>
 
 <script lang="ts">
-  import { RouteLocationMatched, useRoute } from "vue-router"
-  import { watch, reactive, computed } from "vue"
+  import { RouteRecordNormalized, useRoute } from "vue-router"
+  import { watch, reactive, computed,ref} from "vue"
   import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
   import TagsView from "../Tagsview/index.vue"
 
   declare interface CustomRouteLocationMatchedObject {
-    currentRouteList: RouteLocationMatched | Array<T>
+    currentRouteList: Array<RouteRecordNormalized>
   }
   export default {
     components: {
@@ -48,13 +48,14 @@
       let routeListConfig: CustomRouteLocationMatchedObject = reactive({
         currentRouteList: []
       })
-      const breadList = routeListConfig.currentRouteList.filter(item => item.path !== '/')
+      const breadList = computed(() => {
+        return routeListConfig.currentRouteList.filter(item => item.path !== '/')
+      })
 
       watch(
         () => route.path,
         () => {
           routeListConfig.currentRouteList = route.matched
-          window.fs = routeListConfig.currentRouteList
         },
         {
           immediate: true

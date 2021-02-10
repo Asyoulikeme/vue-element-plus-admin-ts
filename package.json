@@ -1,7 +1,7 @@
 {
-  "name": "vue-element-plus-admin-ts",
+  "name": "<%=name%>",
   "version": "0.1.0",
-  "description": "Vite + Ts + VueNext + Element-ui Plus",
+  "description": "<%=description%>",
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
@@ -40,14 +40,8 @@
     "vite": "^2.0.0-beta.60",
     "path": "0.12.7"
   },
-  "author": "wuyuwei",
+  "author": "<%=author%>",
   "license": "ISC",
-  "maintainers": [
-    {
-      "name": "wuyuwei",
-      "email": "wuyuwei@xsyx.com"
-    }
-  ],
   "keywords": [
     "vue3",
     "One Piece",
