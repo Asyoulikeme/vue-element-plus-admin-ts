@@ -33,8 +33,8 @@
   import Sidebar from "./components/Sidebar/index.vue"
   import Navbar from "./components/Header/index.vue"
   import SystemInfo from "./components/Header/SystemInfo.vue"
-  import { useDynamicRoutesHook } from "/@/composition/useTagViewApi"
-  import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
+  import { useDynamicRoutesHook } from "@/composition/useTagViewApi"
+  import { useSystemStoreHook } from "@/composition/useSystemStoreApi"
   export default {
     components: {
       Transition,

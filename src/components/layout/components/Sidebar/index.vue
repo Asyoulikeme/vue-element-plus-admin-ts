@@ -15,8 +15,8 @@
 
 <script lang="ts">
   import Sidebar from "./Sidebar.vue"
-  import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
-  import variables from "/@/style/variable.less"
+  import { useSystemStoreHook } from "@/composition/useSystemStoreApi"
+  import variables from "@/style/variable.less"
   export default {
     components: {
       Sidebar

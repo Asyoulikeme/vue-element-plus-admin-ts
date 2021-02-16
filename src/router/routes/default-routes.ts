@@ -1,8 +1,8 @@
 import { _RouteRecordBase } from "vue-router"
 import { CustomRouteRecordRaw } from "./index.d"
-import Layout from "/@/components/layout/index.vue"
-import Home from "/@/views/Home.vue"
-import NotFound from "/@/views/error-page/Not-Found.vue"
+import Layout from "@/components/layout/index.vue"
+import Home from "@/views/Home.vue"
+import NotFound from "@/views/error-page/Not-Found.vue"
 
 export const defaultRoutes: CustomRouteRecordRaw[] = [
   {

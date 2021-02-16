@@ -32,7 +32,7 @@
 <script lang="ts">
   import { RouteRecordNormalized, useRoute } from "vue-router"
   import { watch, reactive, computed,ref} from "vue"
-  import { useSystemStoreHook } from "/@/composition/useSystemStoreApi"
+  import { useSystemStoreHook } from "@/composition/useSystemStoreApi"
   import TagsView from "../Tagsview/index.vue"
 
   declare interface CustomRouteLocationMatchedObject {
@@ -72,7 +72,7 @@
   }
 </script>
 <style lang="less">
-  @import "/@/style/variable.less";
+  @import "@/style/variable.less";
   .collapseicon .el-breadcrumb__inner a:hover,
   .collapseicon .el-breadcrumb__inner.is-link:hover {
     color: #409eff;

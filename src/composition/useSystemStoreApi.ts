@@ -1,5 +1,5 @@
 import { reactive, computed, ComputedRef } from "vue"
-import { default as allRoutes } from "/@/router/routes/index"
+import { default as allRoutes } from "@/router/routes/index"
 import { CustomRouteRecordRaw } from "vue-router"
 interface SystemInfo {
   isCollapse: boolean

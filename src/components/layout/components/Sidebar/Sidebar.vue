@@ -118,7 +118,7 @@
   }
 </script>
 <style scoped lang="less">
-  @import "/@/style/variable.less";
+  @import "@/style/variable.less";
 
   .el-menu {
     color: #c1c6c8;

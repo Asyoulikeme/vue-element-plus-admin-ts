@@ -1,8 +1,8 @@
 import { RouteRecordRaw } from "vue-router"
-import Layout from "/@/components/layout/index.vue"
-import AA from "/@/views/user/AA.vue"
-import BB from "/@/views/user/BB.vue"
-import CC from "/@/views/vendor/CC.vue"
+import Layout from "@/components/layout/index.vue"
+import AA from "@/views/user/AA.vue"
+import BB from "@/views/user/BB.vue"
+import CC from "@/views/vendor/CC.vue"
 export const userRoutes: RouteRecordRaw[] = [
   {
     path: "/user",

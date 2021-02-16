@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { useDynamicRoutesHook } from "/@/composition/useTagViewApi"
+  import { useDynamicRoutesHook } from "@/composition/useTagViewApi"
   import { useRoute } from "vue-router"
   import { watch } from "vue"
   export default {
@@ -46,7 +46,7 @@
   }
 </script>
 <style scoped lang="less">
-  @import "/@/style/variable.less";
+  @import "@/style/variable.less";
   .tags-view {
     width: 100%;
     height: 35px;

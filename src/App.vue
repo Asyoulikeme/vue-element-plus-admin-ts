@@ -27,9 +27,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    .el-button--primary {
-      background: @menuActiveText; // button 主题色保持一致
-      border-color: @menuActiveText;
-    }
+  
   }
 </style>
