@@ -2,7 +2,7 @@
   <el-menu
     router
     class="el-menu-vertical-demo"
-    :collapse="SYSTEM_INFO.isCollapse"
+    :collapse="states.isCollapse"
     :default-active="$route.path"
     :background-color="variables.menuBg"
     :text-color="variables.menuText"
@@ -30,11 +30,12 @@
       }
     },
     setup() {
-      const { SYSTEM_INFO } = useSystemStoreHook()
+      const { states } = useSystemStoreHook()
       return {
-        SYSTEM_INFO,
+        states,
         variables
       }
     }
   }
 </script>
+s

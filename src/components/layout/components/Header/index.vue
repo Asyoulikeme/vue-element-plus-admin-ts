@@ -2,7 +2,7 @@
   <div class="header_main" style="">
     <div class="collapseicon">
       <i
-        :class="SYSTEM_INFO.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+        :class="states.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
         @click="toggleSidebar"
       ></i>
       <el-breadcrumb separator="/">
@@ -43,7 +43,7 @@
       TagsView
     },
     setup() {
-      const { toggleSidebar, SYSTEM_INFO } = useSystemStoreHook()
+      const { toggleSidebar, states } = useSystemStoreHook()
       const route = useRoute()
       let routeListConfig: CustomRouteLocationMatchedObject = reactive({
         currentRouteList: []
@@ -66,7 +66,7 @@
         breadList,
         toggleSidebar,
         routeListConfig,
-        SYSTEM_INFO
+        states
       }
     }
   }
