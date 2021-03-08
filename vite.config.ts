@@ -7,10 +7,10 @@ const path = require("path")
 export default defineConfig({
   plugins: [
     vue(),
-    babel({
-      babelHelpers: "bundled",
-      exclude: "node_module/**"
-    })
+    // babel({
+    //   babelHelpers: "bundled",
+    //   exclude: "node_module/**"
+    // })
   ],
   resolve: {
     alias: {

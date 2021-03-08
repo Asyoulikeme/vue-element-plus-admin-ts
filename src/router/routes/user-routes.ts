@@ -3,6 +3,7 @@ import Layout from "@/components/layout/index.vue"
 import AA from "@/views/user/AA.vue"
 import BB from "@/views/user/BB.vue"
 import CC from "@/views/vendor/CC.vue"
+import Test from "@/components/brick-filter/Test.vue"
 export const userRoutes: RouteRecordRaw[] = [
   {
     path: "/user",
@@ -48,6 +49,16 @@ export const userRoutes: RouteRecordRaw[] = [
         meta: {
           icon: "el-icon-s-home",
           title: "CC",
+          noCache: false
+        }
+      },
+      {
+        path: "Test",
+        name: "Test",
+        component: Test,
+        meta: {
+          icon: "el-icon-s-home",
+          title: "Test",
           noCache: false
         }
       }

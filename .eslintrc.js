@@ -26,6 +26,7 @@ module.exports = {
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'vue/singleline-html-element-content-newline': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
       'vue/max-attributes-per-line': 'off',
       'vue/html-self-closing': [
         'error',

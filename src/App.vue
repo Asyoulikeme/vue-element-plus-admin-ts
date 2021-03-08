@@ -3,15 +3,15 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, getCurrentInstance } from "vue"
-  import { cloneDeep } from "lodash-es"
+  import { defineComponent, getCurrentInstance,ComponentInternalInstance } from "vue"
+
   export default defineComponent({
     name: "App",
     setup() {
       let obj = {}
-      const a = cloneDeep(obj)
-      console.log(getCurrentInstance())
-      //console.log(a)
+      const ins = <ComponentInternalInstance>getCurrentInstance()
+      
+      //console.log(ins.proxy?.$api.queryUserBlackList())
     }
   })
 </script>

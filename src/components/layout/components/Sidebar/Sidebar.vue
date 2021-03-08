@@ -79,7 +79,7 @@
           Array.isArray(route.children) &&
           route.children.length === 1 &&
           route.children[0].path === ""
-        flag && console.log("caseA pass")
+        //flag && console.log("caseA pass")
         return flag
       }
       /* 只有一个子元素的，且直接是重定向到子元素上面，此时使用redirect的path */
@@ -88,19 +88,19 @@
           Array.isArray(route.children) &&
           route.children.length === 1 &&
           (route.path + "/" + route.children[0].path).replace(/\/\//, "/") === route.redirect
-        flag && console.log("caseB pass")
+        //flag && console.log("caseB pass")
         return flag
       }
       /* 正常路由，仅一级 */
       function caseC(route) {
         const flag = (route.children && route.children.length <= 0) || !route.children
-        flag && console.log("caseC pass")
+        //flag && console.log("caseC pass")
         return flag
       }
       /* 正常路由，多级 */
       function caseD(route) {
         const flag = Array.isArray(route.children) && route.children && route.children.length > 0
-        flag && console.log("caseC pass")
+        //flag && console.log("caseC pass")
         return flag
       }
       function resolvePath(routePath) {
